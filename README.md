@@ -23,7 +23,7 @@ This task can also reset the password for an existing account. There is no publi
 
 ## Deploy to Heroku
 
-The app is configured for Heroku's Ruby buildpack and a single Heroku Postgres database. The `release` process in `Procfile` runs database migrations before each new release. Production uploads use Amazon S3 because files on Heroku dynos are temporary.
+The app is configured for Heroku's Ruby buildpack and a single Heroku Postgres database. The `release` process in `Procfile` runs database migrations before each new release. Heroku Edge serves fingerprinted Rails assets through its CloudFront hostname. Production uploads use Amazon S3 as durable file storage because files on Heroku dynos are temporary; Edge is a CDN and does not store uploaded files.
 
 1. Create a Heroku app and add the Heroku Postgres add-on from the [Heroku Dashboard](https://dashboard.heroku.com/) or with the Heroku CLI:
 
@@ -35,10 +35,10 @@ The app is configured for Heroku's Ruby buildpack and a single Heroku Postgres d
 2. In the app's **Settings → Config Vars**, set:
 
    - `RAILS_MASTER_KEY`: the contents of this app's `config/master.key` (keep it private).
-   - `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, and `AWS_S3_BUCKET`: credentials for an S3 bucket used for production uploads. Give the credentials access only to that bucket.
+   - `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, and `AWS_S3_BUCKET`: credentials for the durable S3 bucket used for production news and gallery uploads. Give the credentials access only to that bucket. S3 is the upload storage origin; Heroku Edge handles CDN delivery for app assets.
    - `APP_HOST`: the public hostname, such as `your-app-name.herokuapp.com` (without `https://`).
 
-   Heroku supplies `DATABASE_URL` when the Postgres add-on is attached. Do not commit secrets to the repository.
+   Heroku supplies `DATABASE_URL` when the Postgres add-on is attached and `EDGE_URL` when Heroku Edge is attached. Do not commit secrets to the repository.
 
 3. Configure the S3 bucket's CORS policy to allow browser uploads from the app's HTTPS hostname. Keep the bucket private; Active Storage serves files through the Rails app.
 

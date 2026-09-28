@@ -19,7 +19,8 @@ Rails.application.configure do
   config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.asset_host = "http://assets.example.com"
+  # Heroku Edge adds EDGE_URL and serves fingerprinted app assets through CloudFront.
+  config.action_controller.asset_host = ENV["EDGE_URL"] if ENV["EDGE_URL"].present?
   config.public_file_server.enabled = true
 
   # Heroku dyno filesystems are ephemeral. Store uploads in a durable object store.
