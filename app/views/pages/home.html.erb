@@ -86,7 +86,7 @@
                 <div class="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4">
                   <% @galleries.each do |gallery| %>
                     <%= link_to gallery_path(gallery), class: "group overflow-hidden rounded-2xl border border-[#e2e5dc] bg-[#fbf8f2] transition hover:-translate-y-0.5 hover:shadow-md" do %>
-                      <% if gallery.photos.attached? %><%= image_tag gallery.photos.first, class: "h-52 w-full object-cover transition group-hover:scale-[1.02]" %><% else %><div class="h-52 bg-[#e3eee5]"></div><% end %>
+                      <% if gallery.photos.attached? %><%= image_tag gallery.featured_photo.variant(resize_to_limit: [480, 360]), loading: "lazy", class: "h-52 w-full object-cover transition group-hover:scale-[1.02]" %><% else %><div class="h-52 bg-[#e3eee5]"></div><% end %>
                       <div class="p-5"><h4 class="font-bold text-[#173e35] group-hover:text-[#b84332]"><%= gallery.title %></h4><p class="mt-1 text-sm text-[#64746c]"><%= gallery.description %></p><span class="mt-4 inline-block text-sm font-bold text-[#17483e]">View gallery →</span></div>
                     <% end %>
                   <% end %>

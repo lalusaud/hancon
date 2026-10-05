@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_04_230000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_04_233000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -69,6 +69,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_04_230000) do
     t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "featured_photo_attachment_id"
+    t.index ["featured_photo_attachment_id"], name: "index_galleries_on_featured_photo_attachment_id"
     t.index ["published", "created_at"], name: "index_galleries_on_published_and_created_at"
   end
 
@@ -103,5 +105,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_04_230000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "galleries", "active_storage_attachments", column: "featured_photo_attachment_id"
   add_foreign_key "sessions", "users"
 end

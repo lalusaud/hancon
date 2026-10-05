@@ -13,8 +13,8 @@
     <% if @gallery.photos.attached? %>
       <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
         <% @gallery.photos.each_with_index do |photo, photo_index| %>
-          <button type="button" class="group block cursor-zoom-in text-left" data-action="lightbox#open" data-lightbox-index="<%= photo_index %>" data-lightbox-src="<%= url_for(photo) %>" data-lightbox-alt="<%= photo.filename %>" aria-label="View <%= photo.filename %> larger">
-            <%= image_tag photo, class: "h-72 w-full rounded-2xl border border-[#e2e5dc] bg-white object-cover transition group-hover:brightness-95", alt: photo.filename.to_s %>
+          <button type="button" class="group block cursor-zoom-in text-left" data-action="lightbox#open" data-lightbox-index="<%= photo_index %>" data-lightbox-src="<%= url_for(photo.variant(:display)) %>" data-lightbox-alt="<%= photo.filename %>" aria-label="View <%= photo.filename %> larger">
+            <%= image_tag photo.variant(:thumbnail), loading: "lazy", class: "h-72 w-full rounded-2xl border border-[#e2e5dc] bg-white object-cover transition group-hover:brightness-95", alt: photo.filename.to_s %>
           </button>
         <% end %>
 
