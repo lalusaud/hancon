@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :events, except: :show
     resources :galleries, except: :show
   end
+  get "about", to: "pages#about"
+  get "programs", to: "pages#programs"
   root "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

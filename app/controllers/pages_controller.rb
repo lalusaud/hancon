@@ -1,6 +1,12 @@
 class PagesController < ApplicationController
   allow_unauthenticated_access
 
+  def about
+  end
+
+  def programs
+  end
+
   def home
     @news = NewsPost.published.order(published_at: :desc).limit(3)
     @events = Event.published.where("starts_at >= ?", Time.current).order(:starts_at).limit(3)

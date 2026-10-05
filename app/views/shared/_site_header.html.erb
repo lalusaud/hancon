@@ -1,21 +1,39 @@
-<header class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-  <%= link_to root_path, class: "flex items-center gap-3", aria: { label: "HaNCON home" } do %>
-    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#b84332] text-sm font-black tracking-tight text-white">H</span>
-    <span class="leading-tight">
-      <span class="block text-lg font-extrabold tracking-[0.16em]">HaNCON</span>
-      <span class="block text-[10px] font-semibold uppercase tracking-[0.13em] text-[#64746c]">Hamilton Nepalese Community</span>
-    </span>
-  <% end %>
-
-  <nav class="hidden items-center gap-8 text-sm font-semibold text-[#40554d] md:flex" aria-label="Main navigation">
-    <%= link_to "About", root_path(anchor: "about"), class: "transition hover:text-[#b84332]" %>
-    <%= link_to "Programs", root_path(anchor: "programs"), class: "transition hover:text-[#b84332]" %>
-    <%= link_to "Community", root_path(anchor: "community"), class: "transition hover:text-[#b84332]" %>
-    <%= link_to "Contact", root_path(anchor: "contact"), class: "transition hover:text-[#b84332]" %>
-    <% if authenticated? %>
-      <%= link_to "Admin", admin_root_path, class: "ml-2 rounded-full border border-[#d4ddd5] px-4 py-2 text-[#17483e] hover:bg-[#f1f5f1]" %>
+<% dark = content_for(:header_theme) == "dark" %>
+<header class="relative z-10 w-full pb-12 sm:pb-20 lg:pb-24">
+  <div class="pointer-events-none absolute inset-x-0 top-0 mx-auto w-full max-w-7xl px-6 lg:px-10">
+    <%= link_to root_path, class: "pointer-events-auto inline-flex", aria: { label: "HaNCON home" } do %>
+      <span class="inline-flex h-32 w-48 items-center justify-center overflow-hidden rounded-b-2xl bg-[#fbf8f2] p-2 shadow-[0_12px_32px_-12px_rgba(9,24,20,0.55)] transition hover:scale-[1.03] sm:h-40 sm:w-64 sm:p-2 lg:h-44 lg:w-72 lg:p-3">
+        <%= image_tag "/images/logo.png", alt: "HaNCON — Hamilton Nepalese Community", class: "h-full w-full object-contain" %>
+      </span>
     <% end %>
-  </nav>
+  </div>
+  <div class="mx-auto flex w-full max-w-7xl items-center justify-end px-6 py-5 lg:px-10">
+    <div class="flex items-center gap-8">
+    <nav class="hidden items-center gap-8 text-sm font-semibold lg:flex <%= dark ? "text-[#d0ded6]" : "text-[#40554d]" %>" aria-label="Main navigation">
+      <% nav_hover = dark ? "hover:text-white" : "hover:text-[#b84332]" %>
+      <%= link_to "About", about_path, class: "transition #{nav_hover}" %>
+      <%= link_to "Programs", programs_path, class: "transition #{nav_hover}" %>
+      <%= link_to "Community", root_path(anchor: "community"), class: "transition #{nav_hover}" %>
+      <%= link_to "Contact", root_path(anchor: "contact"), class: "transition #{nav_hover}" %>
+      <% if authenticated? %>
+        <%= link_to "Admin", admin_root_path, class: "ml-2 rounded-full border px-4 py-2 #{dark ? "border-white/30 text-white hover:bg-white/10" : "border-[#d4ddd5] text-[#17483e] hover:bg-[#f1f5f1]"}" %>
+      <% end %>
+    </nav>
 
-  <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "rounded-full bg-[#17483e] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#10372f]" %>
+    <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "relative hidden rounded-full bg-[#b84332] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#9f3528] lg:inline-flex" %>
+    <details class="relative lg:hidden">
+      <summary class="cursor-pointer list-none rounded-full border p-3 <%= dark ? "border-white/40 text-white" : "border-[#d4ddd5] text-[#17483e]" %>" aria-label="Toggle navigation menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </summary>
+      <nav class="absolute right-0 top-full z-30 mt-3 grid min-w-52 gap-1 rounded-2xl border border-[#e2e5dc] bg-[#fbf8f2] p-2 text-sm font-semibold text-[#17483e] shadow-xl" aria-label="Mobile navigation">
+        <%= link_to "About", about_path, class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
+        <%= link_to "Programs", programs_path, class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
+        <%= link_to "Community", root_path(anchor: "community"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
+        <%= link_to "Contact", root_path(anchor: "contact"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
+        <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "rounded-xl bg-[#b84332] px-4 py-3 text-white hover:bg-[#9f3528]" %>
+      </nav>
+    </details>
+    </div>
+  </div>
 </header>

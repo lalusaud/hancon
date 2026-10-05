@@ -1,7 +1,7 @@
 <%= form_with model: [:admin, @event], class: "space-y-6" do |form| %>
   <% if @event.errors.any? %><div class="rounded-xl bg-red-50 p-4 text-sm text-red-800"><%= @event.errors.full_messages.to_sentence %></div><% end %>
   <div><%= form.label :title, class: "mb-2 block text-sm font-bold" %><%= form.text_field :title, required: true, class: "w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %></div>
-  <div><%= form.label :description, class: "mb-2 block text-sm font-bold" %><%= form.text_area :description, rows: 7, required: true, class: "w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %></div>
+  <div><%= form.label :description, class: "mb-2 block text-sm font-bold" %><%= form.rich_text_area :description, required: true, class: "min-h-56 w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %><p class="mt-2 text-xs text-[#718078]">Use the toolbar to format the event description.</p></div>
   <div class="grid gap-5 sm:grid-cols-2"><div><%= form.label :starts_at, "Starts", class: "mb-2 block text-sm font-bold" %><%= form.datetime_local_field :starts_at, required: true, class: "w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %></div><div><%= form.label :ends_at, "Ends (optional)", class: "mb-2 block text-sm font-bold" %><%= form.datetime_local_field :ends_at, class: "w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %></div></div>
   <div><%= form.label :location, class: "mb-2 block text-sm font-bold" %><%= form.text_field :location, class: "w-full rounded-xl border border-[#d4ddd5] bg-white px-4 py-3" %></div>
   <label class="flex items-center gap-3 text-sm font-semibold"><%= form.check_box :published, class: "h-4 w-4 rounded border-[#a9beb0] text-[#17483e]" %> Publish this event</label>

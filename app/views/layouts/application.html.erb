@@ -24,7 +24,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex min-h-screen flex-col bg-[#fbf8f2] text-[#182c29]">
+  <body class="relative isolate flex min-h-screen flex-col bg-[#fbf8f2] text-[#182c29]">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 [background:linear-gradient(rgba(9,24,20,0.55),rgba(9,24,20,0.68)),url(/images/background.jpg)_center/cover_fixed]"></div>
     <%= render "shared/site_header" %>
     <main class="flex-1">
       <%= yield %>
