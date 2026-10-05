@@ -13,8 +13,8 @@
         <h1 class="font-serif text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">A community that feels like <span class="text-[#e7b85f]">home.</span></h1>
         <p class="mt-7 max-w-xl text-lg leading-8 text-[#d0ded6]">HaNCON brings Hamilton’s Nepali-speaking community together to celebrate our heritage, support one another, and thrive in Canada’s multicultural community.</p>
         <div class="mt-9 flex flex-wrap gap-4">
-          <a href="#about" class="rounded-full bg-[#b84332] px-6 py-4 text-sm font-bold text-white shadow-sm transition hover:bg-[#9f3528]">Discover HaNCON <span aria-hidden="true">→</span></a>
-          <a href="#programs" class="rounded-full border border-white/40 bg-white/10 px-6 py-4 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20">Explore programs</a>
+          <%= link_to about_path, class: "rounded-full bg-[#b84332] px-6 py-4 text-sm font-bold text-white shadow-sm transition hover:bg-[#9f3528]" do %>Discover HaNCON <span aria-hidden="true">→</span><% end %>
+          <%= link_to "Explore programs", programs_path, class: "rounded-full border border-white/40 bg-white/10 px-6 py-4 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20" %>
         </div>
         <div class="mt-12 flex items-center gap-4 border-t border-white/25 pt-6">
           <div class="flex -space-x-2" aria-hidden="true">

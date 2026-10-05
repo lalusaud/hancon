@@ -11,8 +11,10 @@
     <div class="flex items-center gap-8">
     <nav class="hidden items-center gap-8 text-sm font-semibold lg:flex <%= dark ? "text-[#d0ded6]" : "text-[#40554d]" %>" aria-label="Main navigation">
       <% nav_hover = dark ? "hover:text-white" : "hover:text-[#b84332]" %>
-      <%= link_to "About", about_path, class: "transition #{nav_hover}" %>
-      <%= link_to "Programs", programs_path, class: "transition #{nav_hover}" %>
+      <% about_active = controller_name == "pages" && action_name == "about" %>
+      <% programs_active = controller_name == "pages" && action_name == "programs" %>
+      <%= link_to "About", about_path, class: "transition #{nav_hover} #{about_active ? (dark ? "font-bold text-[#e7b85f]" : "font-bold text-[#b84332]") : ""}", aria: { current: ("page" if about_active) } %>
+      <%= link_to "Programs", programs_path, class: "transition #{nav_hover} #{programs_active ? (dark ? "font-bold text-[#e7b85f]" : "font-bold text-[#b84332]") : ""}", aria: { current: ("page" if programs_active) } %>
       <%= link_to "Community", root_path(anchor: "community"), class: "transition #{nav_hover}" %>
       <%= link_to "Contact", root_path(anchor: "contact"), class: "transition #{nav_hover}" %>
       <% if authenticated? %>
@@ -27,8 +29,8 @@
         <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
       </summary>
       <nav class="absolute right-0 top-full z-30 mt-3 grid min-w-52 gap-1 rounded-2xl border border-[#e2e5dc] bg-[#fbf8f2] p-2 text-sm font-semibold text-[#17483e] shadow-xl" aria-label="Mobile navigation">
-        <%= link_to "About", about_path, class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
-        <%= link_to "Programs", programs_path, class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
+        <%= link_to "About", about_path, class: "rounded-xl px-4 py-3 #{about_active ? "bg-[#e3eee5] font-bold text-[#17483e]" : "hover:bg-[#e3eee5]"}", aria: { current: ("page" if about_active) } %>
+        <%= link_to "Programs", programs_path, class: "rounded-xl px-4 py-3 #{programs_active ? "bg-[#e3eee5] font-bold text-[#17483e]" : "hover:bg-[#e3eee5]"}", aria: { current: ("page" if programs_active) } %>
         <%= link_to "Community", root_path(anchor: "community"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
         <%= link_to "Contact", root_path(anchor: "contact"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
         <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "rounded-xl bg-[#b84332] px-4 py-3 text-white hover:bg-[#9f3528]" %>
