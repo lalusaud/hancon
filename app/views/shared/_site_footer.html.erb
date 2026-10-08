@@ -1,6 +1,13 @@
 <footer class="border-t border-[#e6dfd3] bg-[#fbf8f2]">
   <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-7 text-sm text-[#64746c] sm:flex-row sm:items-center sm:justify-between lg:px-10">
-    <p><%= link_to "HaNCON", root_path, class: "font-extrabold tracking-[0.14em] text-[#173e35]" %> · Hamilton Nepalese Community Organization &amp; Network</p>
-    <p>Rooted in culture. Growing together.</p>
+    <div class="flex flex-col gap-1.5">
+      <p><%= link_to "HaNCON", root_path, class: "font-extrabold tracking-[0.14em] text-[#173e35]" %> · Hamilton Nepalese Community Organization &amp; Network</p>
+      <p>Rooted in culture. Growing together.</p>
+    </div>
+    <nav class="flex flex-col items-start gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] sm:items-end" aria-label="External links">
+      <span class="text-[#94a69d]">External links</span>
+      <%= link_to raw('NCCS <span aria-hidden="true">↗</span>'), "https://nccs.ca/", target: "_blank", rel: "noopener noreferrer", class: "transition hover:text-[#b84332]" %>
+      <%= link_to raw('Nepal Tourism Board <span aria-hidden="true">↗</span>'), "https://ntb.gov.np/", target: "_blank", rel: "noopener noreferrer", class: "transition hover:text-[#b84332]" %>
+    </nav>
   </div>
 </footer>
