@@ -1,7 +1,34 @@
 <% content_for :title, "HaNCON | A community that feels like home" %>
 <% content_for :header_theme, "dark" %>
+<% content_for :meta_description, "HaNCON brings Hamilton's Nepali-speaking community together through culture, connection, learning, and community programs." %>
+<% content_for :og_image, "/images/community-hero.png" %>
 <% content_for :head do %>
-  <meta name="description" content="HaNCON brings Hamilton's Nepali-speaking community together through culture, connection, learning, and community programs.">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "<%= request.base_url %>/#website",
+          "name": "HaNCON",
+          "url": "<%= request.base_url %>/",
+          "inLanguage": "en-CA"
+        },
+        {
+          "@type": "NGO",
+          "@id": "<%= request.base_url %>/#organization",
+          "name": "Hamilton Nepalese Community Organization & Network (HaNCON)",
+          "alternateName": "HaNCON",
+          "url": "<%= request.base_url %>/",
+          "logo": "<%= request.base_url %>/favicon/favicon.png",
+          "description": "A not-for-profit organization established in 2023 to preserve Nepalese culture while empowering individuals and families across the Greater Hamilton Area.",
+          "foundingDate": "2023",
+          "areaServed": { "@type": "City", "name": "Hamilton, Ontario, Canada" },
+          "sameAs": ["https://www.facebook.com/profile.php?id=61552859024176"]
+        }
+      ]
+    }
+  </script>
 <% end %>
 
 <div class="w-full text-[#182c29]">

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :events, except: :show
     resources :galleries, except: :show
   end
+  get "sitemap", to: "sitemaps#show", format: "xml"
   get "about", to: "pages#about"
   get "programs", to: "pages#programs"
   root "pages#home"

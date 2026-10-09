@@ -1,5 +1,21 @@
 <% content_for :title, "#{@gallery.title} | HaNCON" %>
 <% content_for :header_theme, "dark" %>
+<% content_for :meta_description, (@gallery.description.presence || "#{@gallery.title} — photo gallery from HaNCON community events.") %>
+<% featured_attachment = @gallery.featured_photo_attachment || @gallery.photos_attachments.first %>
+<% if featured_attachment %><% content_for :og_image, polymorphic_url(featured_attachment.variant(:thumbnail)) %><% content_for :og_image_alt, featured_attachment.filename.to_s %><% end %>
+<% content_for :head do %>
+  <script type="application/ld+json"><%= {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": @gallery.title,
+    "description": seo_description,
+    "url": seo_url,
+    "isPartOf": { "@type": "WebSite", "name": "HaNCON", "url": request.base_url },
+    "image": @gallery.photos_attachments.first(8).map { |attachment|
+      { "@type": "ImageObject", "contentUrl": polymorphic_url(attachment.variant(:thumbnail)), "name": attachment.filename.to_s }
+    }
+  }.to_json.html_safe %></script>
+<% end %>
 
 <section class="px-6 py-10 text-white lg:px-10 lg:py-14">
   <section class="mx-auto max-w-7xl">

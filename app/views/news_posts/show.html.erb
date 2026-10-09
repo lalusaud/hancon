@@ -1,5 +1,24 @@
 <% content_for :title, "#{@news_post.title} | HaNCON" %>
 <% content_for :header_theme, "dark" %>
+<% content_for :og_type, "article" %>
+<% content_for :meta_description, (@news_post.excerpt.presence || @news_post.body&.to_plain_text.to_s.squish).to_s.truncate(160) %>
+<% article_image = @news_post.body.body&.attachments&.find { |attachment| attachment.try(:content_type).to_s.start_with?("image/") }&.attachable %>
+<% content_for :og_image, polymorphic_url(article_image) if article_image %>
+<% content_for :head do %>
+  <meta property="article:published_time" content="<%= (@news_post.published_at || @news_post.created_at).iso8601 %>">
+  <meta property="article:title" content="<%= @news_post.title %>">
+  <script type="application/ld+json"><%= {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": @news_post.title,
+    "image": (polymorphic_url(article_image) if article_image),
+    "datePublished": (@news_post.published_at || @news_post.created_at).iso8601,
+    "dateModified": @news_post.updated_at.iso8601,
+    "author": { "@type": "Organization", "name": "HaNCON", "url": request.base_url },
+    "publisher": { "@type": "Organization", "name": "HaNCON" },
+    "mainEntityOfPage": seo_url
+  }.compact.to_json.html_safe %></script>
+<% end %>
 
 <section class="px-6 py-10 text-white lg:px-10 lg:py-14">
   <article class="mx-auto max-w-3xl">
