@@ -25,9 +25,13 @@
       <h1 class="mt-3 font-serif text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl"><%= @gallery.title %></h1>
       <% if @gallery.description.present? %><p class="mt-5 text-lg leading-8 text-[#e1e9e4]"><%= @gallery.description %></p><% end %>
     </div>
+  </section>
+</section>
 
+<section class="bg-white py-12 text-[#182c29] lg:py-16">
+  <section class="mx-auto max-w-7xl px-6 lg:px-10">
     <% if @gallery.photos.attached? %>
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-controller="lightbox">
         <% @gallery.photos.each_with_index do |photo, photo_index| %>
           <button type="button" class="group block cursor-zoom-in text-left" data-action="lightbox#open" data-lightbox-index="<%= photo_index %>" data-lightbox-src="<%= url_for(photo.variant(:display)) %>" data-lightbox-alt="<%= photo.filename %>" aria-label="View <%= photo.filename %> larger">
             <%= image_tag photo.variant(:thumbnail), loading: "lazy", class: "h-72 w-full rounded-2xl border border-[#e2e5dc] bg-white object-cover transition group-hover:brightness-95", alt: photo.filename.to_s %>
@@ -43,7 +47,7 @@
         </dialog>
       </div>
     <% else %>
-      <p class="mt-10 rounded-2xl border border-dashed border-white/30 p-10 text-center text-[#e1e9e4]">This gallery doesn’t have any photos yet.</p>
+      <p class="rounded-2xl border border-dashed border-[#cbd5cc] p-10 text-center text-[#64746c]">This gallery doesn’t have any photos yet.</p>
     <% end %>
   </section>
 </section>
