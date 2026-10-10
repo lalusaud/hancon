@@ -1,6 +1,6 @@
 module ApplicationHelper
   SITE_NAME = "HaNCON".freeze
-  SITE_TITLE = "HaNCON | Hamilton Nepali Community Organization & Network".freeze
+  SITE_TITLE = "HaNCON | Hamilton Nepali Community Organization And Network".freeze
   SITE_DESCRIPTION = "HaNCON is a not-for-profit organization connecting Hamilton's Nepali-speaking community through culture, heritage, programs, and community support.".freeze
   DEFAULT_OG_IMAGE = "/images/community-hero.png".freeze
 
