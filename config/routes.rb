@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   get "news/:slug", to: "news_posts#show", as: :news_post
+  get "galleries", to: "galleries#index", as: :galleries
   get "galleries/:id", to: "galleries#show", as: :gallery
   namespace :admin do
     root "dashboard#show"
