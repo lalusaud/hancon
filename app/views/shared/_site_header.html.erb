@@ -9,6 +9,8 @@
   </div>
   <div class="mx-auto flex w-full max-w-7xl items-center justify-end px-6 py-5 lg:px-10">
     <div class="flex items-center gap-8">
+    <% date_pill = dark ? "border-white/25 bg-white/10 text-white backdrop-blur" : "border-[#d4ddd5] bg-[#e3eee5] text-[#17483e]" %>
+    <%= link_to nepali_calendar_path, data: { controller: "nepali-date" }, class: "hidden whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold tabular-nums transition md:inline-block #{date_pill}", title: "Open Nepali calendar" do %><% end %>
     <nav class="hidden items-center gap-8 text-sm font-semibold lg:flex <%= dark ? "text-[#d0ded6]" : "text-[#40554d]" %>" aria-label="Main navigation">
       <% nav_hover = dark ? "hover:text-white" : "hover:text-[#b84332]" %>
       <% about_active = controller_name == "pages" && action_name == "about" %>
@@ -22,7 +24,6 @@
       <% end %>
     </nav>
 
-    <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "relative hidden rounded-full bg-[#b84332] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#9f3528] lg:inline-flex" %>
     <details class="relative lg:hidden">
       <summary class="cursor-pointer list-none rounded-full border p-3 <%= dark ? "border-white/40 text-white" : "border-[#d4ddd5] text-[#17483e]" %>" aria-label="Toggle navigation menu">
         <span class="sr-only">Toggle navigation menu</span>
@@ -33,7 +34,6 @@
         <%= link_to "Programs", programs_path, class: "rounded-xl px-4 py-3 #{programs_active ? "bg-[#e3eee5] font-bold text-[#17483e]" : "hover:bg-[#e3eee5]"}", aria: { current: ("page" if programs_active) } %>
         <%= link_to "Community", root_path(anchor: "community"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
         <%= link_to "Contact", root_path(anchor: "contact"), class: "rounded-xl px-4 py-3 hover:bg-[#e3eee5]" %>
-        <%= link_to "Get involved ↗", root_path(anchor: "contact"), class: "rounded-xl bg-[#b84332] px-4 py-3 text-white hover:bg-[#9f3528]" %>
       </nav>
     </details>
     </div>

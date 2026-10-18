@@ -1,0 +1,26 @@
+<% content_for :title, "HaNCON | Nepali Calendar" %>
+<% content_for :header_theme, "dark" %>
+<% content_for :meta_description, "Nepali calendar (Bikram Sambat) with tithi, festivals and public holidays, for the Hamilton Nepali community." %>
+
+<main>
+  <section class="pb-10 pt-8 lg:pb-12 lg:pt-12">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+      <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#0a1f1b]/45 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#f2d9a8] backdrop-blur-sm"><span class="h-2 w-2 rounded-full bg-[#e7b85f]"></span> Nepali Calendar</p>
+      <h1 class="max-w-3xl font-serif text-5xl font-semibold leading-[1.04] tracking-[-0.04em] text-white sm:text-6xl">नेपाली <span class="text-[#e7b85f]">पात्रो</span></h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-[#e1e9e4]">Keep track of Bikram Sambat dates, festivals, and holidays alongside the Gregorian calendar.</p>
+    </div>
+  </section>
+
+  <section class="bg-[#fbf8f2] py-10 text-[#182c29] lg:py-14">
+    <div class="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-start lg:px-10">
+      <div>
+        <iframe src="https://www.hamropatro.com/widgets/calender-responsive.php" title="Nepali Calendar" scrolling="no" class="block h-[640px] w-full max-w-full border-0"></iframe>
+      </div>
+      <aside aria-label="Date converter" class="mx-auto w-full max-w-[350px] lg:mx-0">
+        <h2 class="mb-4 font-serif text-2xl font-semibold tracking-[-0.02em] text-[#173e35]">Date Converter</h2>
+        <iframe src="https://www.hamropatro.com/widgets/dateconverter.php" title="Date Converter" scrolling="no" class="block h-[480px] w-full max-w-full border-0"></iframe>
+      </aside>
+      <p class="text-center text-sm text-[#53645c] lg:col-span-2">Calendar and date converter by <a href="https://www.hamropatro.com" target="_blank" rel="noopener" class="font-semibold text-[#17483e] underline decoration-[#17483e]/30 underline-offset-4 hover:text-[#b84332]">Hamro Patro</a></p>
+    </div>
+  </section>
+</main>

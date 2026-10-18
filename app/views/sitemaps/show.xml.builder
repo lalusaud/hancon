@@ -18,6 +18,12 @@ xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" do
     xml.priority "0.8"
   end
 
+  xml.url do
+    xml.loc nepali_calendar_url
+    xml.changefreq "monthly"
+    xml.priority "0.5"
+  end
+
   @news_posts.each do |post|
     xml.url do
       xml.loc news_post_url(post.slug)

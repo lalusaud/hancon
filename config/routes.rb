@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "sitemap", to: "sitemaps#show", format: "xml"
   get "about", to: "pages#about"
   get "programs", to: "pages#programs"
+  get "nepali_calendar", to: "pages#nepali_calendar"
   root "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
