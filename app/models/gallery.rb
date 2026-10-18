@@ -2,8 +2,8 @@ class Gallery < ApplicationRecord
   belongs_to :featured_photo_attachment, class_name: "ActiveStorage::Attachment", optional: true
 
   has_many_attached :photos do |attachable|
-    attachable.variant :thumbnail, resize_to_limit: [480, 360], preprocessed: true
-    attachable.variant :display, resize_to_limit: [1200, 1200], preprocessed: true
+    attachable.variant :thumbnail, resize_to_limit: [960, 720], preprocessed: true
+    attachable.variant :display, resize_to_limit: [2000, 2000], preprocessed: true
   end
   scope :published, -> { where(published: true) }
 
